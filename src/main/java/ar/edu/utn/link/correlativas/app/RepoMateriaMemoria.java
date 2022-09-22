@@ -20,13 +20,20 @@ public class RepoMateriaMemoria implements RepoMateria {
     }
 
     @Override
-    public void save(Materia m){
+    public void save(Materia m) throws MateriaRepetidaException {
+        if(this.existeMateriaDeNombre(m.getNombre())){
+            throw new MateriaRepetidaException(m.getNombre());
+        }
         materias.add(m);
-        System.out.println("Materia: " + m.getNombre());
     }
 
     public List<Materia> all(){
         return this.materias;
+    }
+
+    public boolean existeMateriaDeNombre(String nombre){
+        long count = this.materias.stream().filter(materia -> materia.getNombre().equals(nombre)).count();
+        return count > 0;
     }
 
     public Page<Materia> page(Pageable page){

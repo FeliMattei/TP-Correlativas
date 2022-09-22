@@ -8,9 +8,10 @@ public class Alumno {
 
 	private String nombre;
 	private List<Curso> cursos;
-	private Collection<Materia>  materiasAprovadas;
-	
-		
+	private Collection<Materia>  materiasAprobadas;
+
+	public Alumno() {}
+
 	public Alumno(String nombre) {
 		super();
 		this.nombre = nombre;
@@ -28,11 +29,11 @@ public class Alumno {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
-	public Collection<Materia> getMateriasAprovadas() {
-		return  materiasAprovadas;
+	public Collection<Materia> getMateriasAprobadas() {
+		return  materiasAprobadas;
 	}
-	public void setMateriasAprovadas(Collection<Materia> materiasAprovadas) {
-		this.materiasAprovadas = materiasAprovadas;
+	public void setMateriasAprobadas(Collection<Materia> materiasAprobadas) {
+		this.materiasAprobadas = materiasAprobadas;
 	}
 
 	public void inscribir(Curso curso) {

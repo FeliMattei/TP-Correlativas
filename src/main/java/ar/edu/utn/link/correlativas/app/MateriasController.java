@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,9 +33,12 @@ public class MateriasController {
     }
 
     @PostMapping("/")
-    public String alta(@RequestBody @Valid Materia materia){
-        repo.save(materia);
-        return "Materia generada.";
-
+    public String alta(@RequestBody @Valid Materia materia, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "No está OK";
+        } else {
+            repo.save(materia);
+            return "Materia generada.";
+        }
     }
 }

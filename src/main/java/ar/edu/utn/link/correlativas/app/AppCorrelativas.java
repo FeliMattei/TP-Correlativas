@@ -23,8 +23,12 @@ public class AppCorrelativas {
     @Bean
     public CommandLineRunner ejemplo(RepoMateria repo){
         return (cosas) -> {
-            repo.save(new Materia("Sistemas operativos"));
-            repo.save(new Materia("Matemática discreta"));
+            repo.save(new Materia("Sistemas operativos",3));
+            repo.save(new Materia("Matemática discreta",1));
+            repo.save(new Materia("Sintaxis",2));
+            repo.save(new Materia("Análisis",1));
+            repo.save(new Materia("Paradigmas",2));
+            repo.save(new Materia("Física",3));
             System.out.println(unNumero);
             System.out.println(path);
         };

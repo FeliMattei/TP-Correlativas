@@ -6,14 +6,19 @@ import ar.edu.utn.link.correlativas.app.RepoMateria;
 import ar.edu.utn.link.correlativas.app.RepoMateriaJPA;
 import ar.edu.utn.link.correlativas.model.Alumno;
 import ar.edu.utn.link.correlativas.model.Materia;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 @SpringBootApplication
 public class AppCorrelativas {
+
+    @Autowired
+    RepositoryRestConfiguration config;
 
     @Value("${algo}")
     private int unNumero;
@@ -27,6 +32,8 @@ public class AppCorrelativas {
 
     @Bean
     public CommandLineRunner materia(RepoMateriaJPA repo) {
+        config.exposeIdsFor(Materia.class);
+
         return (args) -> {
             repo.save(new Materia("Sistemas operativos",3));
             repo.save(new Materia("Matemática discreta",1));

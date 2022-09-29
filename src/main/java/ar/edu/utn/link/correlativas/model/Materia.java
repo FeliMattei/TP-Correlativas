@@ -1,6 +1,4 @@
-package ar.edu.utn.link.correlativas;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package ar.edu.utn.link.correlativas.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -10,7 +8,8 @@ import java.util.Collection;
 @Entity
 @Table(name = "Materia")
 public class Materia {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotBlank

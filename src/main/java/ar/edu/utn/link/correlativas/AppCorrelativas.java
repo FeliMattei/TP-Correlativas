@@ -1,7 +1,11 @@
-package ar.edu.utn.link.correlativas.app;
+package ar.edu.utn.link.correlativas;
 
-import ar.edu.utn.link.correlativas.Alumno;
-import ar.edu.utn.link.correlativas.Materia;
+import ar.edu.utn.link.correlativas.app.MateriaRepetidaException;
+import ar.edu.utn.link.correlativas.app.RepoAlumno;
+import ar.edu.utn.link.correlativas.app.RepoMateria;
+import ar.edu.utn.link.correlativas.app.RepoMateriaJPA;
+import ar.edu.utn.link.correlativas.model.Alumno;
+import ar.edu.utn.link.correlativas.model.Materia;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,31 +26,25 @@ public class AppCorrelativas {
     }
 
     @Bean
-    public CommandLineRunner materia(RepoMateria repo) {
+    public CommandLineRunner materia(RepoMateriaJPA repo) {
         return (args) -> {
-            try {
-                repo.save(new Materia("Sistemas operativos",3));
-                repo.save(new Materia("Matemática discreta",1));
-                repo.save(new Materia("Sintaxis",2));
-                repo.save(new Materia("Análisis",1));
-                repo.save(new Materia("Paradigmas",2));
-                repo.save(new Materia("Física",3));
-            } catch (MateriaRepetidaException e) {
-                throw new RuntimeException(e);
-            }
+            repo.save(new Materia("Sistemas operativos",3));
+            repo.save(new Materia("Matemática discreta",1));
+            repo.save(new Materia("Sintaxis",2));
+            repo.save(new Materia("Análisis",1));
+            repo.save(new Materia("Paradigmas",2));
+            repo.save(new Materia("Física",3));
 
-            System.out.println(unNumero);
-            System.out.println(path);
         };
     }
-
+/*
     @Bean
-    public CommandLineRunner alumno(RepoAlumno repo){
+    public CommandLineRunner alumno(RepoMateriaJPA repo){
         return (args) -> {
             repo.save(new Alumno("Juan"));
             repo.save(new Alumno("Luis"));
             repo.save(new Alumno("Carlos"));
             repo.save(new Alumno("Laura"));
         };
-    }
+    }*/
 }

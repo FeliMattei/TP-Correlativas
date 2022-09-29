@@ -11,28 +11,18 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/materias")
+@RequestMapping("/materias_old")
 public class MateriasController {
 
     @Autowired
-    RepoMateria repo;
+    RepoMateriaJPA repo;
 
-    @GetMapping(path={"","/"})
-    public Page<Materia> materias(Pageable page, @RequestParam(value = "anio", required = false) Integer anio){
-        //return repo.all();
-        if (anio != null) {
-            return new PageImpl<Materia>(repo.porAnio(anio));
-        } else {
-            return repo.page(page);
-        }
-    }
-
-    @GetMapping("/{nombre}")
+    /*@GetMapping("/{nombre}")
     public Materia materia(@PathVariable("nombre") String nombre){
-        return repo.porNombre(nombre);
-    }
+        return repo.findByNombre(nombre);
+    }*/
 
-    @PostMapping("/")
+    /*@PostMapping("/")
     public String alta(@RequestBody @Valid Materia materia, BindingResult bindingResult) throws MateriaRepetidaException {
         if(bindingResult.hasErrors()){
             return "No está OK";
@@ -40,5 +30,5 @@ public class MateriasController {
             repo.save(materia);
             return "Materia cargado.";
         }
-    }
+    }*/
 }

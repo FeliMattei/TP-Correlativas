@@ -47,11 +47,6 @@ public class AppCorrelativas {
         config.exposeIdsFor(Alumno.class);
 
         return (args) -> {
-            /*Materia algo = new Materia("Algo", 1);
-            Alumno pepe = new Alumno("Pepe", "Gonzalez");
-
-            pepe.getMateriasAprobadas().add(algo);
-            repo.save(pepe);*/
             repo.save(new Alumno("Juan", "Gomez"));
             repo.save(new Alumno("Luis", "Lopez"));
             repo.save(new Alumno("Carlos", "Gardel"));

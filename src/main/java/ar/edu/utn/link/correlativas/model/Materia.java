@@ -9,7 +9,7 @@ import java.util.Collection;
 @Table(name = "Materia")
 public class Materia {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotBlank

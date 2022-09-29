@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/alumnos")
+@RequestMapping("/alumnos_old")
 public class AlumnosController {
 
     @Autowired
-    RepoAlumno repo;
-
+    RepoMateriaJPA repo;
+/*
     @GetMapping(path={"","/"})
     public Page<Alumno> alumnos(Pageable page){
         return repo.page(page);
@@ -34,7 +34,7 @@ public class AlumnosController {
             repo.save(alumno);
             return "Alumno cargado.";
         }
-    }
+    }*/
 
 
 }

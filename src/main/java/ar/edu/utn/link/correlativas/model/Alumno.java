@@ -1,22 +1,57 @@
 package ar.edu.utn.link.correlativas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Entity
+@Table(name = "Alumno")
 public class Alumno {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
+	@NotBlank
 	private String nombre;
+
+	@NotBlank
+	private String apellido;
+
+	@Transient
+	@JsonIgnore
 	private List<Curso> cursos;
+
+	@ManyToMany
 	private Collection<Materia>  materiasAprobadas;
 
 	public Alumno() {}
 
-	public Alumno(String nombre) {
+	public Alumno(String nombre, String apellido) {
 		super();
 		this.nombre = nombre;
+		this.apellido = apellido;
+		this.materiasAprobadas = new ArrayList<>();
 	}
-	
+
+	public Long getId(){
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

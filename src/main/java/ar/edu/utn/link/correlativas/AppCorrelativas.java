@@ -1,9 +1,6 @@
 package ar.edu.utn.link.correlativas;
 
-import ar.edu.utn.link.correlativas.app.MateriaRepetidaException;
-import ar.edu.utn.link.correlativas.app.RepoAlumno;
-import ar.edu.utn.link.correlativas.app.RepoMateria;
-import ar.edu.utn.link.correlativas.app.RepoMateriaJPA;
+import ar.edu.utn.link.correlativas.app.*;
 import ar.edu.utn.link.correlativas.model.Alumno;
 import ar.edu.utn.link.correlativas.model.Materia;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +41,21 @@ public class AppCorrelativas {
 
         };
     }
-/*
+
     @Bean
-    public CommandLineRunner alumno(RepoMateriaJPA repo){
+    public CommandLineRunner alumno(RepoAlumnoJPA repo){
+        config.exposeIdsFor(Alumno.class);
+
         return (args) -> {
-            repo.save(new Alumno("Juan"));
-            repo.save(new Alumno("Luis"));
-            repo.save(new Alumno("Carlos"));
-            repo.save(new Alumno("Laura"));
+            /*Materia algo = new Materia("Algo", 1);
+            Alumno pepe = new Alumno("Pepe", "Gonzalez");
+
+            pepe.getMateriasAprobadas().add(algo);
+            repo.save(pepe);*/
+            repo.save(new Alumno("Juan", "Gomez"));
+            repo.save(new Alumno("Luis", "Lopez"));
+            repo.save(new Alumno("Carlos", "Gardel"));
+            repo.save(new Alumno("Laura", "Pereyra"));
         };
-    }*/
+    }
 }
